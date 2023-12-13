@@ -2,10 +2,12 @@ import kotlinx.coroutines.*
 import java.io.File
 
 fun main() {
+    // Oneliner
     val onelinerResult = File("src/main/resources/input.txt").readLines().sumOf { "${it.first { char -> char.isDigit() }}${it.last { char -> char.isDigit() }}".toInt() }
 
     val input = File("src/main/resources/input.txt").readLines()
 
+    // Parallell løsning
     val result = runBlocking(Dispatchers.Default) {
         input
             .map { line ->
